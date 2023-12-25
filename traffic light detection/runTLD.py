@@ -1,5 +1,7 @@
 from ultralytics import YOLO
 import cv2
+import time
+
 
 model = YOLO('traffic light detection\\models\\TLDv2.pt')
 
@@ -7,6 +9,12 @@ model = YOLO('traffic light detection\\models\\TLDv2.pt')
 
 # Open the camera
 cap = cv2.VideoCapture(0)
+
+# Get the current timestamp
+timestamp = int(time.time())
+
+# Create a unique filename using the timestamp
+filename = f'results_{timestamp}.txt'
 
 # Check if the camera opened successfully
 if not cap.isOpened():
@@ -23,7 +31,12 @@ while cap.isOpened():
 
         # Visualize the results on the frame
         annotated_frame = results[0].plot()
-        save = results[0].save_txt('results.txt')
+
+        # Save the results to the file
+        save = results[0].save_txt(filename, save_conf=True)
+
+        # array = results[0].numpy()
+        # print("this is the array", array)
 
         # Display the annotated frame
         cv2.imshow("Inference", annotated_frame)
