@@ -14,7 +14,7 @@ cap = cv2.VideoCapture(0)
 timestamp = int(time.time())
 
 # Create a unique filename using the timestamp
-filename = f'results_{timestamp}.txt'
+filename = f'traffic light detection/result/results_{timestamp}.txt'
 
 # Check if the camera opened successfully
 if not cap.isOpened():
