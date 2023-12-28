@@ -1,13 +1,20 @@
 from ultralytics import YOLO
+import cv2
+import time
 
-# Load a pretrained YOLOv8n model
+
 model = YOLO('traffic light detection\\models\\TLDv2.pt')
 
-# Run inference on an image
-results = model('C:\\Users\\ACER\\OneDrive\\Desktop\\demo images\\demo-img2.jpg')  
+# Define path to the image file
+source = 'C:\\Users\\ACER\\OneDrive\\Desktop\\demo images\\demo-img4.jpg'
 
-# Get the detections for the first image in the batch
-detections = results[0]
+    # Run YOLOv8 inference on the frame
+    # results = model(source, conf=0.7)
+
+# model.predict(source, show=True, classes=0)
+
+# run inference
+results = model(source)
 
 # Get the boxes and names
 for result in results:
