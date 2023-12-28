@@ -35,8 +35,9 @@ while cap.isOpened():
         # Save the results to the file
         save = results[0].save_txt(filename, save_conf=True)
 
-        # array = results[0].numpy()
-        # print("this is the array", array)
+        array = results[0].numpy()
+        
+        print("this is the array", array)
 
         # Display the annotated frame
         cv2.imshow("Inference", annotated_frame)
